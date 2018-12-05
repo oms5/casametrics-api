@@ -9,6 +9,15 @@
  * For more information on the Sails logger, check out:
  * https://sailsjs.com/docs/concepts/logging
  */
+var winston = require('winston');
+var customLogger = new winston.Logger();
+
+// A file based transport logging only errors formatted as json.
+customLogger.add(winston.transports.File, {
+  level: 'debug',
+  filename: 'casa.log',
+  json: true
+});
 
 module.exports.log = {
 
@@ -24,6 +33,8 @@ module.exports.log = {
   *                                                                          *
   ***************************************************************************/
 
-   level: 'verbose'
+  custom: customLogger,
+
+  level: 'verbose'
 
 };
