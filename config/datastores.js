@@ -49,7 +49,7 @@ module.exports.datastores = {
     *                                                                          *
     ***************************************************************************/
    adapter: 'sails-postgresql',
-   url: 'postgresql://casamation@casametrics:Cprecious112!@casametrics.postgres.database.azure.com:5432/postgres',
+   url: process.env.DB_CONN,
    ssl: true
 
   },

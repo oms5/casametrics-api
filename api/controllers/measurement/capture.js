@@ -25,7 +25,7 @@ module.exports = {
     // Install forever
     // TODO handle errors and return values
     console.log('about to log request... %s', JSON.stringify(this.req.body));
-    if (!this.req.headers['authorization'] || this.req.headers['authorization'] != 'HJsjs493DXdj392jsSJ20kdjsajsjSW') {
+    if (!this.req.headers['authorization'] || this.req.headers['authorization'] != process.env.API_KEY) {
       return exits.unauthorized();
     }
 
