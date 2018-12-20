@@ -1,148 +1,161 @@
-Chart.defaults.global = {
-    // Boolean - Whether to animate the chart
-    animation: true,
-
-    // Number - Number of animation steps
-    animationSteps: 60,
-
-    // String - Animation easing effect
-    animationEasing: "easeOutQuart",
-
-    // Boolean - If we should show the scale at all
-    showScale: true,
-
-    // Boolean - If we want to override with a hard coded scale
-    scaleOverride: false,
-
-    // ** Required if scaleOverride is true **
-    // Number - The number of steps in a hard coded scale
-    scaleSteps: null,
-    // Number - The value jump in the hard coded scale
-    scaleStepWidth: null,
-    // Number - The scale starting value
-    scaleStartValue: null,
-
-    // String - Colour of the scale line
-    scaleLineColor: "rgba(0,0,0,.1)",
-
-    // Number - Pixel width of the scale line
-    scaleLineWidth: 1,
-
-    // Boolean - Whether to show labels on the scale
-    scaleShowLabels: true,
-
-    // Interpolated JS string - can access value
-    scaleLabel: "<%=value%>",
-
-    // Boolean - Whether the scale should stick to integers, not floats even if drawing space is there
-    scaleIntegersOnly: true,
-
-    // Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
-    scaleBeginAtZero: false,
-
-    // String - Scale label font declaration for the scale label
-    scaleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-
-    // Number - Scale label font size in pixels
-    scaleFontSize: 12,
-
-    // String - Scale label font weight style
-    scaleFontStyle: "normal",
-
-    // String - Scale label font colour
-    scaleFontColor: "#666",
-
-    // Boolean - whether or not the chart should be responsive and resize when the browser does.
-    responsive: true,
-
-    // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-    maintainAspectRatio: true,
-
-    // Boolean - Determines whether to draw tooltips on the canvas or not
-    showTooltips: true,
-
-    // Array - Array of string names to attach tooltip events
-    tooltipEvents: [],
-
-    // String - Tooltip background colour
-    tooltipFillColor: "#FFF",
-
-    // String - Tooltip label font declaration for the scale label
-    tooltipFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-
-    // Number - Tooltip label font size in pixels
-    tooltipFontSize: 14,
-
-    // String - Tooltip font weight style
-    tooltipFontStyle: "normal",
-
-    // String - Tooltip label font colour
-    tooltipFontColor: "#3385c2",
-
-    // String - Tooltip title font declaration for the scale label
-    tooltipTitleFontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
-
-    // Number - Tooltip title font size in pixels
-    tooltipTitleFontSize: 14,
-
-    // String - Tooltip title font weight style
-    tooltipTitleFontStyle: "bold",
-
-    // String - Tooltip title font colour
-    tooltipTitleFontColor: "#fff",
-
-    // Number - pixel width of padding around tooltip text
-    tooltipYPadding: 10,
-
-    // Number - pixel width of padding around tooltip text
-    tooltipXPadding: 10,
-
-    // Number - Size of the caret on the tooltip
-    tooltipCaretSize: 8,
-
-    // Number - Pixel radius of the tooltip border
-    tooltipCornerRadius: 6,
-
-    // Number - Pixel offset from point x to tooltip edge
-    tooltipXOffset: 10,
-
-    // String - Template string for single tooltips
-    tooltipTemplate: "<%if (label){%> <%}%><%= value %> - Late invoices",
-
-    // String - Template string for single tooltips
-    multiTooltipTemplate: "<%= value %>",
-
-    // Function - Will fire on animation progression.
-    onAnimationProgress: function(){},
-
-    // Function - Will fire on animation completion.
-    onAnimationComplete: function(){
-      //this.showTooltip(this.datasets[0].points, true);
-    }
-}
-
-var data = {
-    labels: ["JAN-14", "FEB-14", "MAR-14", "APR-14", "MAY-14", "JUN-14", "JUL-14", "AUG-14"],
-    datasets: [
-        {
-            label: "My First dataset",
-            fillColor: "rgba(255,255,255,0.3)",
-            strokeColor: "#3f8cc5",
-            pointColor: "#0066b3",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#1880cf",
-            pointHighlightStroke: "#fff",
-            data: [65, 59, 70, 81, 64, 55, 40, 10]
-        }
-    ]
+window.chartColors = {
+	red: 'rgb(255, 99, 132)',
+	orange: 'rgb(255, 159, 64)',
+	yellow: 'rgb(255, 205, 86)',
+	green: 'rgb(75, 192, 192)',
+	blue: 'rgb(54, 162, 235)',
+	purple: 'rgb(153, 102, 255)',
+	grey: 'rgb(201, 203, 207)'
 };
 
-var ctx = $("#myChart").get(0).getContext("2d");
+var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+		var config = {
+            pointDotRadius : 8,
+            pointDotStrokeWidth : 4,
+            pointColor : "#0066b3",
+            pointStrokeColor : "ffffff",
+			type: 'bar',
+			data: {
+				labels: [],
+				datasets: [{
+					label: 'Miles Run',
+					backgroundColor: "#0066b3",
+					borderColor: "#0066b3",
+					data: [
+					],
+                    fill: false,
+                    lineTension: 0
+                },
+                // {
+				// 	label: 'My Second dataset',
+				// 	fill: false,
+				// 	backgroundColor: "#ff0000",
+				// 	borderColor: "#ff0000",
+				// 	data: [
+				// 		78,39,20,38,20,33,39
+				// 	],
+                // }
+                ]
+			},
+			options: {
+				responsive: true,
+				title: {
+					display: true,
+					text: 'Ham Stats'
+				},
+				tooltips: {
+					mode: 'index',
+					intersect: false,
+				},
+				hover: {
+					mode: 'nearest',
+					intersect: true
+				},
+				scales: {
+					xAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Date'
+						}
+					}],
+					yAxes: [{
+						display: true,
+						scaleLabel: {
+							display: true,
+							labelString: 'Miles'
+						}
+					}]
+				}
+			}
+		};
 
-var myLineChart = new Chart(ctx).Line(data, {
-  bezierCurve: true,
-  pointDotRadius : 8,
-  pointDotStrokeWidth : 4,
-  pointColor : "#0066b3",
-  pointStrokeColor : "#000"
-});
+		window.onload = function() {
+
+            const requestOptions = { 
+                method: 'GET',
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                    'Authorization': 'HJsjs493DXdj392jsSJ20kdjsajsjSW'
+                }),
+              };
+
+            fetch("/api/v1/measurement/stats", requestOptions)
+            .then( (response) => {
+                return response.json();
+            })
+            .then((data) => {
+                console.log(data);
+                var ctx = document.getElementById('canvas').getContext('2d');
+                config.data.labels = data.dailyActivity.map( (el) => {
+                    const date = moment(el.sessiondate).format("MM/DD");
+                    return date;
+                });
+                config.data.datasets[0].data = data.dailyActivity.map((el) => el.miles);
+                window.myLine = new Chart(ctx, config);
+            });;
+		};
+
+		// document.getElementById('randomizeData').addEventListener('click', function() {
+		// 	config.data.datasets.forEach(function(dataset) {
+		// 		dataset.data = dataset.data.map(function() {
+		// 			return  random();
+		// 		});
+
+		// 	});
+
+		// 	window.myLine.update();
+		// });
+
+		// var colorNames = Object.keys(window.chartColors);
+		// document.getElementById('addDataset').addEventListener('click', function() {
+		// 	var colorName = colorNames[config.data.datasets.length % colorNames.length];
+		// 	var newColor = window.chartColors[colorName];
+		// 	var newDataset = {
+		// 		label: 'Dataset ' + config.data.datasets.length,
+		// 		backgroundColor: newColor,
+		// 		borderColor: newColor,
+		// 		data: [],
+		// 		fill: false
+		// 	};
+
+		// 	for (var index = 0; index < config.data.labels.length; ++index) {
+		// 		newDataset.data.push(random());
+		// 	}
+
+		// 	config.data.datasets.push(newDataset);
+		// 	window.myLine.update();
+		// });
+
+		// document.getElementById('addData').addEventListener('click', function() {
+		// 	if (config.data.datasets.length > 0) {
+		// 		var month = MONTHS[config.data.labels.length % MONTHS.length];
+		// 		config.data.labels.push(month);
+
+		// 		config.data.datasets.forEach(function(dataset) {
+		// 			dataset.data.push(random());
+		// 		});
+
+		// 		window.myLine.update();
+		// 	}
+		// });
+
+		// document.getElementById('removeDataset').addEventListener('click', function() {
+		// 	config.data.datasets.splice(0, 1);
+		// 	window.myLine.update();
+		// });
+
+		// document.getElementById('removeData').addEventListener('click', function() {
+		// 	config.data.labels.splice(-1, 1); // remove the label first
+
+		// 	config.data.datasets.forEach(function(dataset) {
+		// 		dataset.data.pop();
+		// 	});
+
+		// 	window.myLine.update();
+		// });
+
+function random() {
+   const rand = Math.random() *100;
+	 return  Math.round(rand);
+}

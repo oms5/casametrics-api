@@ -11,7 +11,7 @@ const DAILY_STATS_QUERY = `
 
   group by deviceid
     , DATE(endtime - interval '5 hour')  -- group activity in middle of the early AM to day before
-  order by sessiondate desc
+  order by sessiondate
 `;
 module.exports = {
 

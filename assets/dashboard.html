@@ -1,41 +1,25 @@
-<!DOCTYPE html>
-<html lang="en" >
-
+<html>
     <head>
-    <meta charset="UTF-8">
-    <title>Chart.js responsive test</title>
-    
-        <style>
-            /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
-            * {
-                box-sizing: border-box;
-            }       
-
-            .graph_container {
-                width: 100%;
-                max-width: 800px;
-                background: #fff;
-            }
-        </style>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-        <script src="https://cdn.rawgit.com/nnnick/Chart.js/8b840ce56be51b61dfc2d4e40e56304c880c541b/Chart.js"></script>
+        <title>Line Chart</title>
     </head>
 
     <body>
-    
-
-        <div class="graph_container">
-
-        <canvas id="myChart" width="1600" height="800"></canvas>
-        
+        <div style="width:75%;">
+            <canvas id="canvas"></canvas>
         </div>
-        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-        <script  src="js/index.js"></script>
+      
 
-
-
-
+        <!-- <button id="randomizeData">Randomize Data</button>
+        <button id="addDataset">Add Dataset</button>
+        <button id="removeDataset">Remove Dataset</button>
+        <button id="addData">Add Data</button>
+        <button id="removeData">Remove Data</button> -->
+    
     </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+    <script src="./js/index.js"></script>
 
 </html>
+
+
