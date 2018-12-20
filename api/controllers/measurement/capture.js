@@ -19,7 +19,7 @@ module.exports = {
 
   fn: async function (inputs, exits) {
 
-    // TODO check API key 
+    
     // deploy to azure service
     // TODO validate all inputs
     // Install forever

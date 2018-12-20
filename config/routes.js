@@ -33,5 +33,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
   'POST /api/v1/measurement/capture': { action: 'measurement/capture' },
+  'GET /api/v1/measurement/stats': {action: 'measurement/stats'},
+  'get /dashaboard': {view: 'dashboard'}
 
 };
