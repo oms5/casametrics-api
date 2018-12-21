@@ -33,6 +33,6 @@
   "author": "ocolon",
   "license": "",
   "engines": {
-    "node": "^10.5"
+    "node": "10.1.0"
   }
 }
