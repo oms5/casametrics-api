@@ -10,21 +10,23 @@ window.chartColors = {
 
 var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 		var config = {
-            pointDotRadius : 8,
-            pointDotStrokeWidth : 4,
-            pointColor : "#0066b3",
-            pointStrokeColor : "ffffff",
+            
 			type: 'bar',
 			data: {
 				labels: [],
 				datasets: [{
-					label: 'Miles Run',
-					backgroundColor: "#0066b3",
-					borderColor: "#0066b3",
+                    label: 'Miles Run',
+                    backgroundColor: "rgba(170,196,215,0.3)",
+                    borderColor: "#0066b3",
+                    borderWidth: 3,
+                    pointRadius: 8,
+                    pointBorderWidth: 4,
+                    pointBackgroundColor: "#66ccff",
+                    pointBorderColor: "#0066b3",
 					data: [
 					],
-                    fill: false,
-                    lineTension: 0
+                    fill: true,
+                    //lineTension: .1
                 },
                 // {
 				// 	label: 'My Second dataset',
@@ -40,7 +42,7 @@ var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'A
 			options: {
 				responsive: true,
 				title: {
-					display: true,
+					display: false,
 					text: 'Ham Stats'
 				},
 				tooltips: {
@@ -71,6 +73,8 @@ var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'A
 		};
 
 		window.onload = function() {
+            const ctx = document.getElementById('canvas').getContext('2d');
+            window.myLine = new Chart(ctx, config);
 
             const requestOptions = { 
                 method: 'GET',
@@ -86,13 +90,13 @@ var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'A
             })
             .then((data) => {
                 console.log(data);
-                var ctx = document.getElementById('canvas').getContext('2d');
+               
                 config.data.labels = data.dailyActivity.map( (el) => {
                     const date = moment(el.sessiondate).format("MM/DD");
                     return date;
                 });
                 config.data.datasets[0].data = data.dailyActivity.map((el) => el.miles);
-                window.myLine = new Chart(ctx, config);
+                myLine.update();
             });;
 		};
 
