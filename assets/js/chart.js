@@ -94,7 +94,7 @@ var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'A
                 config.data.labels = data.dailyActivity.map( (el) => {
                     
                     const date = moment.utc(el.sessiondate, moment.ISO_8601).format("dd MM/DD");
-                    console.log( "date from server %s | formatted %s", el.sessiondate, date);
+                    //console.log( "date from server %s | formatted %s", el.sessiondate, date);
                     return date;
                 });
                 config.data.datasets[0].data = data.dailyActivity.map((el) => el.miles);

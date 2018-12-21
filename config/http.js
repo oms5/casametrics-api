@@ -40,7 +40,6 @@ module.exports.http = {
     //   'favicon',
     // ],
 
-
     /***************************************************************************
     *                                                                          *
     * The body parser that will handle incoming multipart HTTP requests.       *
@@ -54,8 +53,9 @@ module.exports.http = {
     //   var middlewareFn = skipper({ strict: true });
     //   return middlewareFn;
     // })(),
-    cache: 0
+    
 
   },
+  cache: 0
 
 };
