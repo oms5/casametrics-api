@@ -7,8 +7,6 @@ const DAILY_STATS_QUERY = `
     , DATE(endtime - interval '5 hour') as sessiondate
   from measurement
   where deviceid = 'PI_213'
-    --and endtime BETWEEN '2018-12-19 15:00:00' and '2018-12-20 05:00:00'
-
   group by deviceid
     , DATE(endtime - interval '5 hour')  -- group activity in middle of the early AM to day before
   order by sessiondate

@@ -93,7 +93,7 @@ var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'A
                 window.responseData = data; 
                 config.data.labels = data.dailyActivity.map( (el) => {
                     
-                    const date = moment(el.sessiondate).format("MM/DD");
+                    const date = moment(el.sessiondate, moment.ISO_8601).format("dd MM/DD");
                     console.log( "date from server %s | formatted %s", el.sessiondate, date);
                     return date;
                 });
