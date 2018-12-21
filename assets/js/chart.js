@@ -15,7 +15,7 @@ var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'A
 			data: {
 				labels: [],
 				datasets: [{
-                    label: 'Miles Run',
+                    label: 'Miles Ran',
                     backgroundColor: "rgba(170,196,215,0.3)",
                     borderColor: "#0066b3",
                     borderWidth: 3,
