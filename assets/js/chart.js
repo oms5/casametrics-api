@@ -9,7 +9,7 @@ window.chartColors = {
 };
 
 var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-		var config = {
+		var dailyChartConfig = {
             
 			type: 'bar',
 			data: {
@@ -73,8 +73,8 @@ var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'A
 		};
 
 		window.onload = function() {
-            const ctx = document.getElementById('canvas').getContext('2d');
-            window.myLine = new Chart(ctx, config);
+            const ctx = document.getElementById('dailyChart').getContext('2d');
+            window.myLine = new Chart(ctx, dailyChartConfig);
 
             const requestOptions = { 
                 method: 'GET',
@@ -91,17 +91,59 @@ var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'A
             .then((data) => {
                 console.log(data);
                 window.responseData = data; 
-                config.data.labels = data.dailyActivity.map( (el) => {
+                dailyChartConfig.data.labels = data.dailyActivity.map( (el) => {
                     
                     const date = moment.utc(el.sessiondate, moment.ISO_8601).format("dd MM/DD");
                     //console.log( "date from server %s | formatted %s", el.sessiondate, date);
                     return date;
                 });
-                config.data.datasets[0].data = data.dailyActivity.map((el) => el.miles);
-                myLine.update();
-            });;
+                dailyChartConfig.data.datasets[0].data = data.dailyActivity.map((el) => el.miles);
+				myLine.update();
+				instantiateViewComponents();
+			});
+
+			// new Vue({
+			// 	el:"#card"
+			// });
 		};
 
+	function instantiateViewComponents() {
+		new Vue({
+			el: '#app',
+				data: {
+					selected: null,
+					activityForDay: null,
+					revolutions: null,
+					inches: null,
+					feet: null,
+					miles: null
+				},
+				methods: {
+					showActivityForDay: function (event) {
+						const activityForDay =  window.responseData.dailyActivity.find((activity) => {
+							return activity.sessiondate === event;
+						});
+						console.log("activity: " + activityForDay.revolutions)
+						this.revolutions = activityForDay.revolutions;
+						this.inches = activityForDay.inches;
+						this.feet = activityForDay.feet;
+						this.miles = activityForDay.miles;
+					}
+				},
+				computed: {
+					dates: function() {
+						const list = window.responseData.dailyActivity.reverse().map((activity)=> {
+							const display = moment.utc(activity.sessiondate, moment.ISO_8601).format("ddd, MMM Do");
+							return {value: activity.sessiondate, text: display};
+						})
+						return list;
+					},
+					currentLongDateDisplay: function() {
+						return this.selected ? ("Hams Stats for " + moment.utc(this.selected, moment.ISO_8601).format("MMMM Do")) : "";
+					}
+				}
+		});
+	}
 		// document.getElementById('randomizeData').addEventListener('click', function() {
 		// 	config.data.datasets.forEach(function(dataset) {
 		// 		dataset.data = dataset.data.map(function() {
