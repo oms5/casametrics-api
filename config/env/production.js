@@ -250,9 +250,9 @@ module.exports = {
     * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
     *                                                                          *
     ***************************************************************************/
-    onlyAllowOrigins: [
-      'https://casametrics-api.azurewebsites.net'
-    ],
+    // onlyAllowOrigins: [
+    //   'https://casametrics-api.azurewebsites.net'
+    // ],
 
 
     /***************************************************************************
@@ -370,7 +370,7 @@ module.exports = {
   *                                                                         *
   ***************************************************************************/
   custom: {
-    baseUrl: 'https://example.com',
+    baseUrl: 'https://casametrics-api.azurewebsites.net',
     internalEmailAddress: 'support@example.com',
 
     // mailgunDomain: 'mg.example.com',
