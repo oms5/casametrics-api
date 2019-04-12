@@ -3,21 +3,19 @@
         <title>Ham's Health</title>
         <link type="text/css" rel="stylesheet" href="//unpkg.com/bootstrap/dist/css/bootstrap.min.css" />
         <link
-        type="text/css"
-        rel="stylesheet"
-        href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css"
+            type="text/css"
+            rel="stylesheet"
+            href="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css"
         />
-
-       
     </head>
 
     <body>
         
-        <div style="width:75%;">
+        <div style="float: left;width: 80%">
                 <h1>Ham's Daily Stats</h1>
-                <canvas style="float: left;" id="dailyChart"></canvas>
+                <canvas id="dailyChart"></canvas>
         </div>
-        <div id='app' >
+        <div id='app'>
                 <b-card
                 v-bind:title="currentLongDateDisplay"
                 img-src="https://www.gannett-cdn.com/-mm-/d45a1bc902cb3f4367b332e27f859c7252d4b7fa/c=0-109-2119-1306/local/-/media/2017/02/04/USATODAY/USATODAY/636217992348678319-GettyImages-525140239.jpg?width=3200&height=1680&fit=crop"
@@ -42,14 +40,7 @@
             
         </div>
         
-
-      
-
-        <!-- <button id="randomizeData">Randomize Data</button>
-        <button id="addDataset">Add Dataset</button>
-        <button id="removeDataset">Remove Dataset</button>
-        <button id="addData">Add Data</button>
-        <button id="removeData">Remove Data</button> -->
+        <div><span id="rpmValue">0</span>RPMs</div>
     
     </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
@@ -59,6 +50,7 @@
     <script src="//unpkg.com/@babel/polyfill@latest/dist/polyfill.min.js"></script>
     <script src="//unpkg.com/vue@latest/dist/vue.min.js"></script>
     <script src="//unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+    <script type="text/javascript" src="./js/sails.io.js"></script>
 </html>
 
 

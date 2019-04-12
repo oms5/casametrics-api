@@ -73,6 +73,8 @@ var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'A
 		};
 
 		window.onload = function() {
+
+			listentOnSockets();
             const ctx = document.getElementById('dailyChart').getContext('2d');
             window.myLine = new Chart(ctx, dailyChartConfig);
 
@@ -106,6 +108,23 @@ var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'A
 			// 	el:"#card"
 			// });
 		};
+
+	function listentOnSockets() {
+		window.clearRpmTimeoutId = 0;
+		window.io.socket.get('/api/v1/measurement/realtime/join/rpms/PI211', function responseFromServer (body, response) {
+			
+			console.log("The server responded with status " + response.statusCode + " and said: ", body);
+		});
+
+		window.io.socket.on('rpms', function(data) {
+			document.getElementById('rpmValue').innerHTML = data.value;
+			window.clearTimeout(window.clearRpmTimeoutId);
+			window.clearRpmTimeoutId = setTimeout(function(){ 
+				document.getElementById('rpmValue').innerHTML = 0;
+			}, 
+			1000);
+		});
+	}
 
 	function instantiateViewComponents() {
 		new Vue({

@@ -19,7 +19,8 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': { view: 'pages/homepage' },
+  // '/': { view: 'pages/homepage' },
+  '/': { view: 'dashboard' },
 
 
   /***************************************************************************
@@ -34,6 +35,9 @@ module.exports.routes = {
   ***************************************************************************/
   'POST /api/v1/measurement/capture': { action: 'measurement/capture' },
   'GET /api/v1/measurement/stats': {action: 'measurement/stats'},
-  'get /dashaboard': {view: 'dashboard'}
+  'get /dashaboard': {view: 'dashboard'},
+  'GET /api/v1/measurement/realtime/join/:event/:deviceId': {controller: 'DashboardController', action: 'join'},
+  'POST /api/v1/measurement/realtime/publish/:event/:deviceId': {controller: 'DashboardController', action: 'publish'}
+
 
 };
