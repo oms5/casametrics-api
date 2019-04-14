@@ -122,7 +122,7 @@ var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'A
 			window.clearRpmTimeoutId = setTimeout(function(){ 
 				document.getElementById('rpmValue').innerHTML = 0;
 			}, 
-			1000);
+			2000);
 		});
 	}
 

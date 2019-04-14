@@ -252,7 +252,9 @@ module.exports = {
     ***************************************************************************/
     onlyAllowOrigins: [
       'https://casametrics-api.azurewebsites.net', 
-      'http://casametrics-api.azurewebsites.net'
+      'http://casametrics-api.azurewebsites.net',
+      'http://localhost:1337',
+      'http://localhost'
     ],
 
 
