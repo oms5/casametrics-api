@@ -255,7 +255,8 @@ module.exports = {
       'http://casametrics-api.azurewebsites.net',
       'http://localhost:1337',
       'http://localhost',
-      'http://141.155.172.105'
+      'http://141.155.172.105',
+      'http://192.168.1.4'
     ],
 
 
