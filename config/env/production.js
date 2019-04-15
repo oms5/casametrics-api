@@ -250,14 +250,14 @@ module.exports = {
     * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
     *                                                                          *
     ***************************************************************************/
-    onlyAllowOrigins: [
-      'https://casametrics-api.azurewebsites.net', 
-      'http://casametrics-api.azurewebsites.net',
-      'http://localhost:1337',
-      'http://localhost',
-      'http://141.155.172.105',
-      'http://192.168.1.4'
-    ],
+    // onlyAllowOrigins: [
+    //   'https://casametrics-api.azurewebsites.net', 
+    //   'http://casametrics-api.azurewebsites.net',
+    //   'http://localhost:1337',
+    //   'http://localhost',
+    //   'http://141.155.172.105',
+    //   'http://192.168.1.4'
+    // ],
 
 
     /***************************************************************************
