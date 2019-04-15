@@ -4,11 +4,11 @@ const DAILY_STATS_QUERY = `
     sum(value) * 29 as inches,
     sum(value) * 29 *0.083333 as feet,
     (sum(value) * 29 *0.083333 )/5280 as miles
-    , DATE(endtime - interval '5 hour') as sessiondate
+    , DATE(endtime - interval '6 hour') as sessiondate
   from measurement
   where deviceid = 'PI_213'
   group by deviceid
-    , DATE(endtime - interval '5 hour')  -- group activity in middle of the early AM to day before
+    , DATE(endtime - interval '6 hour')  -- group activity in middle of the early AM to day before
   order by sessiondate
 `;
 module.exports = {
